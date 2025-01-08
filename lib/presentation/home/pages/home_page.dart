@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Jadwal Terdekat Anda',
+                      'Profile Anda',
                       style: TextStyle(
                         color: AppColors.gray3,
                         fontSize: 16.0,
