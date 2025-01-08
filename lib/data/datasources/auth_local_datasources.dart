@@ -1,4 +1,5 @@
 import 'package:komdigi_logbooks_supervisors/data/models/auth_response_model.dart';
+import 'package:komdigi_logbooks_supervisors/data/models/update_response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocalDatasource {
@@ -22,12 +23,12 @@ class AuthLocalDatasource {
     return null;
   }
 
-  // Future<void> updateAuthData(UpdateProfileResponseModel data) async {
-  //   final pref = await SharedPreferences.getInstance();
-  //   final authData = await getAuthData();
-  //   if (authData != null) {
-  //     final updatedData = authData.copyWith(user: data.user);
-  //     await pref.setString('auth_data', updatedData.toJson());
-  //   }
-  // }
+  Future<void> updateAuthData(UpdateProfileResponseModel data) async {
+    final pref = await SharedPreferences.getInstance();
+    final authData = await getAuthData();
+    if (authData != null) {
+      final updatedData = authData.copyWith(user: data.user);
+      await pref.setString('auth_data', updatedData.toJson());
+    }
+  }
 }
