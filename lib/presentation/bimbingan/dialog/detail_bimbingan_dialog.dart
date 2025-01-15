@@ -4,18 +4,14 @@ import 'package:komdigi_logbooks_supervisors/core/extensions/extensions.dart';
 class DetailBimbinganDialog extends StatefulWidget {
   final String namaPeserta;
   final String namaProject;
-  final String namaKampus;
+  // final String namaKampus;
   final String tglPertemuan;
-  final String jumlahDurasi;
-  final String jumlahInterval;
   const DetailBimbinganDialog(
       {super.key,
       required this.namaPeserta,
       required this.namaProject,
-      required this.namaKampus,
-      required this.tglPertemuan,
-      required this.jumlahDurasi,
-      required this.jumlahInterval});
+      // required this.namaKampus,
+      required this.tglPertemuan,});
 
   @override
   State<DetailBimbinganDialog> createState() => _DetailBimbinganDialogState();
@@ -62,12 +58,12 @@ class _DetailBimbinganDialogState extends State<DetailBimbinganDialog> {
             ),
             subtitle: Text(widget.namaPeserta),
           ),
-          ListTile(
-            title: const Text(
-              'Nama Kampus',
-            ),
-            subtitle: Text(widget.namaKampus),
-          ),
+          // ListTile(
+          //   title: const Text(
+          //     'Nama Kampus',
+          //   ),
+          //   subtitle: Text(widget.namaKampus),
+          // ),
           ListTile(
             title: const Text(
               'Tanggal Pertemuan',
@@ -75,18 +71,18 @@ class _DetailBimbinganDialogState extends State<DetailBimbinganDialog> {
             subtitle: Text(widget.tglPertemuan),
             leading: const Icon(Icons.calendar_today),
           ),
-          ListTile(
-            title: const Text(
-              'Durasi',
-            ),
-            subtitle: Text(widget.jumlahDurasi),
-          ),
-          ListTile(
-            title: const Text(
-              'Interval',
-            ),
-            subtitle: Text(widget.jumlahInterval),
-          ),
+          // ListTile(
+          //   title: const Text(
+          //     'Durasi',
+          //   ),
+          //   subtitle: Text(widget.jumlahDurasi),
+          // ),
+          // ListTile(
+          //   title: const Text(
+          //     'Interval',
+          //   ),
+          //   subtitle: Text(widget.jumlahInterval),
+          // ),
         ],
       ),
     );

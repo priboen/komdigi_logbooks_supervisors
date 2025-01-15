@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:komdigi_logbooks_supervisors/core/core.dart';
+import 'package:komdigi_logbooks_supervisors/core/extensions/build_context_ext.dart';
+import 'package:komdigi_logbooks_supervisors/core/extensions/date_time_ext.dart';
 import 'package:komdigi_logbooks_supervisors/data/datasources/auth_local_datasources.dart';
 import 'package:komdigi_logbooks_supervisors/data/models/auth_response_model.dart';
 import 'package:komdigi_logbooks_supervisors/presentation/bimbingan/bloc/get_bimbingan/get_bimbingan_bloc.dart';
+import 'package:komdigi_logbooks_supervisors/presentation/bimbingan/dialog/detail_bimbingan_dialog.dart';
 
 class BimbinganPage extends StatefulWidget {
   const BimbinganPage({super.key});
@@ -96,21 +99,37 @@ class _BimbinganPageState extends State<BimbinganPage> {
                                       ),
                                     ),
                                     const Spacer(),
-                                    Chip(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(32.0),
-                                      ),
-                                      side: const BorderSide(
-                                        color: AppColors.primary,
-                                        width: 1.0,
-                                      ),
-                                      label: const Text(
-                                        'Detail',
-                                      ),
-                                      labelStyle: const TextStyle(
-                                        color: AppColors.primary,
-                                      ),
+                                    // Chip(
+                                    //   shape: RoundedRectangleBorder(
+                                    //     borderRadius:
+                                    //         BorderRadius.circular(32.0),
+                                    //   ),
+                                    //   side: const BorderSide(
+                                    //     color: AppColors.primary,
+                                    //     width: 1.0,
+                                    //   ),
+                                    //   label: const Text(
+                                    //     'Detail',
+                                    //   ),
+                                    //   labelStyle: const TextStyle(
+                                    //     color: AppColors.primary,
+                                    //   ),
+                                    // ),
+                                    Button.filled(
+                                      onPressed: () {
+                                        context.push(DetailBimbinganDialog(
+                                          namaPeserta: bimbingan.leader?.name ??
+                                              "Tidak ada nama",
+                                          namaProject:
+                                              bimbingan.project?.name ?? '',
+                                          tglPertemuan: bimbingan
+                                              .leader!.createdAt!
+                                              .toFormattedDate(),
+                                        ));
+                                      },
+                                      label: 'Detail',
+                                      width: 100,
+                                      height: 35,
                                     ),
                                   ],
                                 ),
