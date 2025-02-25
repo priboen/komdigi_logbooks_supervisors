@@ -10,6 +10,7 @@ import 'package:komdigi_logbooks_supervisors/presentation/auth/bloc/login_bloc/l
 import 'package:komdigi_logbooks_supervisors/presentation/auth/bloc/logout_bloc/logout_bloc.dart';
 import 'package:komdigi_logbooks_supervisors/presentation/auth/pages/login_page.dart';
 import 'package:komdigi_logbooks_supervisors/presentation/bimbingan/bloc/get_bimbingan/get_bimbingan_bloc.dart';
+import 'package:komdigi_logbooks_supervisors/presentation/bimbingan/bloc/update_status_bimbingan/update_status_bimbingan_bloc.dart';
 import 'package:komdigi_logbooks_supervisors/presentation/grades/bloc/add_nilai/add_nilai_bloc.dart';
 import 'package:komdigi_logbooks_supervisors/presentation/profile/bloc/update_profile_bloc/update_profile_bloc.dart';
 import 'package:komdigi_logbooks_supervisors/presentation/progress/bloc/get_detail_progress/get_detail_progress_bloc.dart';
@@ -76,6 +77,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AddNilaiBloc(
             GradeRemoteDatasources(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => UpdateStatusBimbinganBloc(
+            InternshipRemoteDatasources(),
           ),
         ),
       ],

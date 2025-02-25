@@ -32,4 +32,37 @@ class InternshipRemoteDatasources {
       );
     }
   }
+
+  Future<Either<String, String>> updateStatus(
+    int? id,
+    String status,
+  ) async {
+    final authData = await AuthLocalDatasource().getAuthData();
+    final headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${authData?.token}'
+    };
+    final url = Uri.parse(
+      '${Variables.baseUrl}/api/internships/$id',
+    );
+    final response = await http.put(
+      url,
+      headers: headers,
+      body: jsonEncode(
+        {
+          'status': status,
+        },
+      ),
+    );
+    if (response.statusCode == 200) {
+      return Right(
+        jsonDecode(response.body)['message'],
+      );
+    } else {
+      return Left(
+        jsonDecode(response.body)['message'],
+      );
+    }
+  }
 }

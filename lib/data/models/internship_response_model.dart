@@ -36,6 +36,12 @@ class Bimbingan {
     final String? status;
     final DateTime? createdAt;
     final DateTime? updatedAt;
+    final String? campus;
+    final String? letterUrl;
+    final String? memberPhotoUrl;
+    final DateTime? startDate;
+    final DateTime? endDate;
+    final int? period;
     final Leader? leader;
     final Project? project;
     final List<Leader>? members;
@@ -48,6 +54,12 @@ class Bimbingan {
         this.status,
         this.createdAt,
         this.updatedAt,
+        this.campus,
+        this.letterUrl,
+        this.memberPhotoUrl,
+        this.startDate,
+        this.endDate,
+        this.period,
         this.leader,
         this.project,
         this.members,
@@ -65,6 +77,12 @@ class Bimbingan {
         status: json["status"],
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+        campus: json["campus"],
+        letterUrl: json["letter_url"],
+        memberPhotoUrl: json["member_photo_url"],
+        startDate: json["start_date"] == null ? null : DateTime.parse(json["start_date"]),
+        endDate: json["end_date"] == null ? null : DateTime.parse(json["end_date"]),
+        period: json["period"],
         leader: json["leader"] == null ? null : Leader.fromMap(json["leader"]),
         project: json["project"] == null ? null : Project.fromMap(json["project"]),
         members: json["members"] == null ? [] : List<Leader>.from(json["members"]!.map((x) => Leader.fromMap(x))),
@@ -78,6 +96,12 @@ class Bimbingan {
         "status": status,
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
+        "campus": campus,
+        "letter_url": letterUrl,
+        "member_photo_url": memberPhotoUrl,
+        "start_date": "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+        "end_date": "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+        "period": period,
         "leader": leader?.toMap(),
         "project": project?.toMap(),
         "members": members == null ? [] : List<dynamic>.from(members!.map((x) => x.toMap())),

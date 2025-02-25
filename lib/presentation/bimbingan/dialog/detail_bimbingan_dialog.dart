@@ -3,15 +3,21 @@ import 'package:komdigi_logbooks_supervisors/core/extensions/extensions.dart';
 
 class DetailBimbinganDialog extends StatefulWidget {
   final String namaPeserta;
+  final List<String?> namaAnggota;
   final String namaProject;
-  // final String namaKampus;
-  final String tglPertemuan;
-  const DetailBimbinganDialog(
-      {super.key,
-      required this.namaPeserta,
-      required this.namaProject,
-      // required this.namaKampus,
-      required this.tglPertemuan,});
+  final String namaKampus;
+  final String tglMulai;
+  final String tglSelesai;
+  final String periodeMagang;
+  const DetailBimbinganDialog({
+    super.key,
+    required this.namaPeserta,
+    required this.namaProject,
+    required this.namaKampus,
+    required this.tglMulai,
+    required this.tglSelesai,
+    required this.periodeMagang, required this.namaAnggota,
+  });
 
   @override
   State<DetailBimbinganDialog> createState() => _DetailBimbinganDialogState();
@@ -45,6 +51,7 @@ class _DetailBimbinganDialogState extends State<DetailBimbinganDialog> {
         ],
       ),
       content: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
             title: const Text(
@@ -54,35 +61,42 @@ class _DetailBimbinganDialogState extends State<DetailBimbinganDialog> {
           ),
           ListTile(
             title: const Text(
-              'Nama Project',
+              'Anggota',
             ),
-            subtitle: Text(widget.namaPeserta),
+            subtitle: Text(widget.namaAnggota.join(', ')),
           ),
-          // ListTile(
-          //   title: const Text(
-          //     'Nama Kampus',
-          //   ),
-          //   subtitle: Text(widget.namaKampus),
-          // ),
           ListTile(
             title: const Text(
-              'Tanggal Pertemuan',
+              'Nama Project',
             ),
-            subtitle: Text(widget.tglPertemuan),
+            subtitle: Text(widget.namaProject),
+          ),
+          ListTile(
+            title: const Text(
+              'Nama Kampus',
+            ),
+            subtitle: Text(widget.namaKampus),
+          ),
+          ListTile(
+            title: const Text(
+              'Tanggal Mulai',
+            ),
+            subtitle: Text(widget.tglMulai),
             leading: const Icon(Icons.calendar_today),
           ),
-          // ListTile(
-          //   title: const Text(
-          //     'Durasi',
-          //   ),
-          //   subtitle: Text(widget.jumlahDurasi),
-          // ),
-          // ListTile(
-          //   title: const Text(
-          //     'Interval',
-          //   ),
-          //   subtitle: Text(widget.jumlahInterval),
-          // ),
+          ListTile(
+            title: const Text(
+              'Tanggal Selesai',
+            ),
+            subtitle: Text(widget.tglSelesai),
+            leading: const Icon(Icons.calendar_today),
+          ),
+          ListTile(
+            title: const Text(
+              'Durasi',
+            ),
+            subtitle: Text(widget.periodeMagang),
+          ),
         ],
       ),
     );
